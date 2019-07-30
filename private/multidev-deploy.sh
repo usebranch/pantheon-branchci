@@ -8,7 +8,7 @@ terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 git remote add pantheon $PANTHEON_GIT_URL
 
 # Push the merge request source branch to Pantheon
-git push pantheon $COMMIT_SHA:$PANTHEON_ENV --force
+git push pantheon $COMMIT_SHA:refs/heads/$PANTHEON_ENV --force
 
 # Create a function for determining if a multidev exists
 TERMINUS_DOES_MULTIDEV_EXIST()
