@@ -1,6 +1,3 @@
-# Store the mr- environment name
-export PANTHEON_ENV=pr-$BRANCH
-
 # Authenticate with Terminus
 terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 
@@ -8,7 +5,7 @@ terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 git remote add pantheon $PANTHEON_GIT_URL
 
 # Push the merge request source branch to Pantheon
-git push pantheon $COMMIT_SHA:refs/heads/$PANTHEON_ENV --force
+git push pantheon $COMMIT_SHA:refs/heads/$BRANCH --force
 
 # Create a function for determining if a multidev exists
 TERMINUS_DOES_MULTIDEV_EXIST()
@@ -27,11 +24,11 @@ TERMINUS_DOES_MULTIDEV_EXIST()
 }
 
 # If the mutltidev doesn't exist
-if ! TERMINUS_DOES_MULTIDEV_EXIST $PANTHEON_ENV
+if ! TERMINUS_DOES_MULTIDEV_EXIST $BRANCH
 then
     # Create it with Terminus
-    echo "No multidev for $PANTHEON_ENV found, creating one..."
-    terminus multidev:create $PANTHEON_SITE.dev $PANTHEON_ENV
+    echo "No multidev for $BRANCH found, creating one..."
+    terminus multidev:create $PANTHEON_SITE.dev $BRANCH
 else
-    echo "The multidev $PANTHEON_ENV already exists, skipping creating it..."
+    echo "The multidev $BRANCH already exists, skipping creating it..."
 fi
