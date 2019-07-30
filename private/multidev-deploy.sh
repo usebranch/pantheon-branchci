@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Store the mr- environment name
 export PANTHEON_ENV=pr-$BRANCH
 
