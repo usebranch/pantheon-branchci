@@ -4,9 +4,6 @@ export PANTHEON_ENV=pr-$BRANCH
 # Authenticate with Terminus
 terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 
-# Checkout the merge request source branch
-git checkout $COMMIT_SHA
-
 # Add the Pantheon Git repository as an additional remote
 git remote add pantheon $PANTHEON_GIT_URL
 
