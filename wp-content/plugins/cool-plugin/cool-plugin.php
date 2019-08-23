@@ -6,6 +6,6 @@
 Plugin Name: Cool Plugin
 Description: A cool plugin that's pretty cool.
 Author: Peter Suhm
-Version: 1234
+Version: 12345
 Author URI: https://branchci.com
 */
