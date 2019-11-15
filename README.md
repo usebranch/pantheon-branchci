@@ -29,4 +29,3 @@ If you would like to keep a separate set of configuration for local development,
 ### 4. Enjoy!
 
 ![alt](http://i.imgur.com/fzIeQBP.png, '')
-
