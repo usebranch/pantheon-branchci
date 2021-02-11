@@ -1,19 +1,14 @@
-#!/bin/bash
-
 # Store the mr- environment name
 export PANTHEON_ENV=pr-$BRANCH
 
 # Authenticate with Terminus
 terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
 
-# Checkout the merge request source branch
-git checkout $COMMIT_SHA
-
 # Add the Pantheon Git repository as an additional remote
 git remote add pantheon $PANTHEON_GIT_URL
 
 # Push the merge request source branch to Pantheon
-git push pantheon $COMMIT_SHA:$PANTHEON_ENV --force
+git push pantheon $COMMIT_SHA:refs/heads/$PANTHEON_ENV --force
 
 # Create a function for determining if a multidev exists
 TERMINUS_DOES_MULTIDEV_EXIST()
